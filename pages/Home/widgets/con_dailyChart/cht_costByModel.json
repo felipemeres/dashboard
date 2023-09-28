@@ -1,0 +1,241 @@
+{
+    "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
+    "mobileBottomRow": 54,
+    "setAdaptiveYMin": false,
+    "widgetName": "cht_costByModel",
+    "allowScroll": false,
+    "dynamicPropertyPathList": [],
+    "displayName": "Chart",
+    "iconSVG": "https://appcdn.appsmith.com/static/media/icon.04227b3516da60d6462fe38c74f88261.svg",
+    "searchTags": [
+        "graph",
+        "visuals",
+        "visualisations"
+    ],
+    "topRow": 9,
+    "bottomRow": 42,
+    "parentRowSpace": 10,
+    "type": "CHART_WIDGET",
+    "hideCard": false,
+    "mobileRightColumn": 24,
+    "chartData": {
+        "a82x3g77l9": {
+            "data": "{{utils.groupCostsByModel.data[\"Fine-tuning models\"].map(d => {\n  return {\n    x: d.date,\n    y: d.cost\n  }\n})}}",
+            "seriesName": "Fine-tuning Models"
+        },
+        "dnh6en58fs": {
+            "data": "{{utils.groupCostsByModel.data[\"Instruct models\"].map(d => {\n  return {\n    x: d.date,\n    y: d.cost\n  }\n})}}",
+            "color": "#ef4444",
+            "seriesName": "Instruct Models"
+        },
+        "zyv10dik1n": {
+            "data": "{{utils.groupCostsByModel.data[\"Embedding models\"].map(d => {\n  return {\n    x: d.date,\n    y: d.cost\n  }\n})}}",
+            "seriesName": "Embedding Models"
+        },
+        "gusaiiipxn": {
+            "data": "{{utils.groupCostsByModel.data[\"GPT-4\"].map(d => {\n  return {\n    x: d.date,\n    y: d.cost\n  }\n})}}",
+            "seriesName": "GPT 4"
+        },
+        "oorlape42m": {
+            "data": "{{utils.groupCostsByModel.data[\"Fine-tuned models\"].map(d => {\n  return {\n    x: d.date,\n    y: d.cost\n  }\n})}}",
+            "seriesName": "Fine-tuned Models"
+        },
+        "yrlmwfyo39": {
+            "data": "{{utils.groupCostsByModel.data[\"InstructGPT\"].map(d => {\n  return {\n    x: d.date,\n    y: d.cost\n  }\n})}}",
+            "seriesName": "InstructGPT"
+        },
+        "1zroezd0ia": {
+            "data": "{{utils.groupCostsByModel.data[\"Audio models\"].map(d => {\n  return {\n    x: d.date,\n    y: d.cost\n  }\n})}}",
+            "seriesName": "Audio"
+        },
+        "0djz3fujml": {
+            "data": "{{utils.groupCostsByModel.data[\"Chat models\"].map(d => {\n  return {\n    x: d.date,\n    y: d.cost\n  }\n})}}",
+            "seriesName": "Chat Models"
+        },
+        "4d99lbs59p": {
+            "data": "{{utils.groupCostsByModel.data[\"Image models\"].map(d => {\n  return {\n    x: d.date,\n    y: d.cost\n  }\n})}}",
+            "seriesName": "Image Models"
+        }
+    },
+    "animateLoading": true,
+    "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
+    "parentColumnSpace": 19.8125,
+    "dynamicTriggerPathList": [],
+    "leftColumn": 0,
+    "dynamicBindingPathList": [
+        {"key": "borderRadius"},
+        {"key": "boxShadow"},
+        {"key": "accentColor"},
+        {"key": "fontFamily"},
+        {"key": "chartData.gusaiiipxn.data"},
+        {"key": "chartData.1zroezd0ia.data"},
+        {"key": "chartData.dnh6en58fs.data"},
+        {"key": "chartData.0djz3fujml.data"},
+        {"key": "chartData.4d99lbs59p.data"},
+        {"key": "chartData.zyv10dik1n.data"},
+        {"key": "chartData.oorlape42m.data"},
+        {"key": "chartData.a82x3g77l9.data"},
+        {"key": "chartData.yrlmwfyo39.data"}
+    ],
+    "customFusionChartConfig": {
+        "type": "column2d",
+        "dataSource": {
+            "data": [
+                {
+                    "label": "Product1",
+                    "value": 20000
+                },
+                {
+                    "label": "Product2",
+                    "value": 22000
+                },
+                {
+                    "label": "Product3",
+                    "value": 32000
+                }
+            ],
+            "chart": {
+                "legendIconSides": "4",
+                "canvasPadding": "0",
+                "captionAlignment": "center",
+                "yAxisNameFontSize": "14",
+                "caption": "Sales Report",
+                "labelFontColor": "#716e6e",
+                "chartLeftMargin": "20",
+                "captionFontSize": "24",
+                "chartTopMargin": "10",
+                "theme": "fusion",
+                "legendIconAlpha": "100",
+                "chartBottomMargin": "10",
+                "labelFontSize": "12",
+                "xAxisNameFontColor": "#716e6e",
+                "yAxisNameFontColor": "#716e6e",
+                "captionFontColor": "#231F20",
+                "yAxisValueFontColor": "#716e6e",
+                "captionPadding": "20",
+                "yAxisName": "Revenue($)",
+                "legendIconBgAlpha": "100",
+                "xAxisName": "Product Line",
+                "alignCaptionWithCanvas": 1,
+                "chartRightMargin": "40",
+                "legendPosition": "top",
+                "xAxisNameFontSize": "14",
+                "yAxisValueFontSize": "12"
+            }
+        }
+    },
+    "customEChartConfig": {
+        "yAxis": [{"type": "value"}],
+        "xAxis": [{"type": "category"}],
+        "legend": {
+            "top": 40,
+            "type": "scroll"
+        },
+        "grid": {
+            "top": 100,
+            "left": 15,
+            "bottom": 30,
+            "right": 15,
+            "containLabel": true
+        },
+        "series": [
+            {
+                "stack": "Search Engine",
+                "type": "bar"
+            },
+            {
+                "stack": "Search Engine",
+                "type": "bar"
+            },
+            {
+                "stack": "Search Engine",
+                "type": "bar"
+            }
+        ],
+        "tooltip": {
+            "axisPointer": {"type": "shadow"},
+            "trigger": "axis"
+        },
+        "title": {
+            "left": "center",
+            "text": "Search Engine Usage",
+            "textStyle": {
+                "overflow": "truncate",
+                "width": 200
+            }
+        },
+        "dataset": {"source": [
+            [
+                "Day",
+                "Baidu",
+                "Google",
+                "Bing"
+            ],
+            [
+                "Mon",
+                620,
+                120,
+                60
+            ],
+            [
+                "Tue",
+                732,
+                132,
+                72
+            ],
+            [
+                "Wed",
+                701,
+                101,
+                71
+            ],
+            [
+                "Thu",
+                734,
+                134,
+                74
+            ],
+            [
+                "Fri",
+                1090,
+                290,
+                190
+            ],
+            [
+                "Sat",
+                1130,
+                230,
+                130
+            ],
+            [
+                "Sun",
+                1120,
+                220,
+                110
+            ]
+        ]}
+    },
+    "key": "6lq9ybh4qb",
+    "showDataPointLabel": false,
+    "isDeprecated": false,
+    "rightColumn": 64,
+    "widgetId": "uv596bdjl6",
+    "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+    "minWidth": 450,
+    "isVisible": true,
+    "version": 1,
+    "parentId": "c97e99zvvq",
+    "labelOrientation": "auto",
+    "renderMode": "CANVAS",
+    "isLoading": false,
+    "mobileTopRow": 22,
+    "responsiveBehavior": "fill",
+    "yAxisName": "Cost ($)",
+    "originalTopRow": 9,
+    "chartName": "",
+    "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+    "mobileLeftColumn": 0,
+    "xAxisName": "Days",
+    "originalBottomRow": 42,
+    "chartType": "COLUMN_CHART"
+}

@@ -1,0 +1,84 @@
+{
+  "unpublishedPage": {
+    "name": "Home",
+    "slug": "home",
+    "layouts": [
+      {
+        "viewMode": false,
+        "dsl": {
+          "widgetName": "MainContainer",
+          "backgroundColor": "none",
+          "rightColumn": 4896,
+          "snapColumns": 64,
+          "detachFromLayout": true,
+          "widgetId": "0",
+          "topRow": 0,
+          "bottomRow": 620,
+          "containerStyle": "none",
+          "snapRows": 124,
+          "parentRowSpace": 1,
+          "type": "CANVAS_WIDGET",
+          "canExtend": true,
+          "version": 86,
+          "minHeight": 1292,
+          "useAutoLayout": false,
+          "dynamicTriggerPathList": [],
+          "parentColumnSpace": 1,
+          "dynamicBindingPathList": [],
+          "leftColumn": 0,
+          "positioning": "fixed"
+        },
+        "layoutOnLoadActions": [
+          [
+            {
+              "id": "Home_utils.findDailyAverageCost",
+              "name": "utils.findDailyAverageCost",
+              "collectionId": "Home_utils",
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "async () => {\n  const cost = await utils.getUsageData();\n  const dailyCosts = cost.daily_costs;\n  let totalCost = 0;\n  dailyCosts.forEach(day => {\n    day.line_items.forEach(item => {\n      totalCost += item.cost;\n    });\n  });\n  const averageDailyCost = totalCost / dailyCosts.length;\n  return (averageDailyCost / 1000).toFixed(3);\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "Home_utils.groupCostsByModel",
+              "name": "utils.groupCostsByModel",
+              "collectionId": "Home_utils",
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "async () => {\n  const cost = await utils.getUsageData();\n  const dailyCosts = cost.daily_costs;\n  let costsByModel = {};\n  dailyCosts.forEach(day => {\n    const date = new Date(day.timestamp * 1000);\n    let year = date.getFullYear();\n    let month = (date.getMonth() + 1).toString().padStart(2, '0');\n    let dayString = date.getDate().toString().padStart(2, '0');\n    const dateString = `${year}-${month}-${dayString}`;\n    day.line_items.forEach(item => {\n      if (!costsByModel.hasOwnProperty(item.name)) {\n        costsByModel[item.name] = [];\n      }\n      costsByModel[item.name].push({\n        date: utils.convertDate(dateString),\n        cost: item.cost / 1000\n      });\n    });\n  });\n  return costsByModel;\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ],
+          [
+            {
+              "id": "Home_utils.top10Days",
+              "name": "utils.top10Days",
+              "collectionId": "Home_utils",
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "async () => {\n  const cost = await utils.getUsageData();\n  const dailyCosts = cost.daily_costs;\n  let daysWithTotalCosts = dailyCosts.map(day => {\n    const date = new Date(day.timestamp * 1000);\n    let year = date.getFullYear();\n    let month = (date.getMonth() + 1).toString().padStart(2, '0');\n    let dayString = date.getDate().toString().padStart(2, '0');\n    const dateString = `${year}-${month}-${dayString}`;\n    let totalCost = day.line_items.reduce((sum, item) => sum + item.cost, 0);\n    return {\n      date: utils.convertDate(dateString),\n      totalCost: (totalCost / 1000).toFixed(3)\n    };\n  });\n  daysWithTotalCosts.sort((a, b) => b.totalCost - a.totalCost);\n  return daysWithTotalCosts.slice(0, 10);\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ]
+        ],
+        "layoutOnLoadActionErrors": [],
+        "validOnPageLoadActions": true,
+        "id": "Home",
+        "deleted": false,
+        "policies": [],
+        "userPermissions": []
+      }
+    ],
+    "userPermissions": [],
+    "policies": [],
+    "isHidden": false
+  },
+  "deleted": false,
+  "gitSyncId": "6515e7073be49336476d94b8_6515e7073be49336476d94ba"
+}
